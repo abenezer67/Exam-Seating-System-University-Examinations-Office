@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In — Exam Seating System</title>
+    <link rel="icon" href="chairlogo.png" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+        background: #eef0f2;
+        color: #202b38;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .login-wrap {
+        width: 100%;
+        max-width: 380px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .brand-mark img {
+        width: 44px;
+        height: 44px;
+        border: 1px solid #9c7a3c;
+        border-radius: 50%;
+      }
+
+      .brand-title {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 20px;
+        color: #1b2a3a;
+      }
+
+      .brand-sub {
+        font-size: 11px;
+        color: #8a94a0;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .card {
+        background: #ffffff;
+        border: 1px solid #dcdfe3;
+        border-radius: 4px;
+        padding: 32px 28px;
+      }
+
+      h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: normal;
+        font-size: 19px;
+        color: #1b2a3a;
+        margin-bottom: 6px;
+      }
+
+      .card-hint {
+        color: #8a94a0;
+        font-size: 12.5px;
+        margin-bottom: 22px;
+      }
+
+      label {
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #5b6672;
+        margin: 14px 0 6px 0;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccd1d7;
+        border-radius: 3px;
+        font-size: 14px;
+        font-family: inherit;
+        background: #fbfbfa;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #9c7a3c;
+      }
+
+      button {
+        width: 100%;
+        font-family: inherit;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 22px;
+        background: #1b2a3a;
+        color: #ffffff;
+      }
+
+      button:hover {
+        background: #24374a;
+      }
+
+      .message {
+        font-size: 13px;
+        padding: 10px 12px;
+        border-radius: 3px;
+        margin-bottom: 18px;
+      }
+
+      .message.error {
+        background: #f8e9e7;
+        color: #9c4a3c;
+        border: 1px solid #eccbc6;
+      }
+
+      .message.success {
+        background: #eaf1ea;
+        color: #3c6e4a;
+        border: 1px solid #c9dfcb;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 24px;
+        color: #8a94a0;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-wrap">
+      <div class="brand">
+        <span class="brand-mark">
+          <img src="chairlogo.png" alt="" />
+        </span>
+        <div>
+          <div class="brand-title">Exam Seating System</div>
+          <div class="brand-sub">University Examinations Office</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h1>Sign In</h1>
+        <div class="card-hint">Enter your admin credentials to continue.</div>
+
+        <div id="errorMsg" class="message error" style="display: none">
+          Invalid username or password. Please try again.
+        </div>
+        <div id="logoutMsg" class="message success" style="display: none">
+          You have been signed out.
+        </div>
+
+        <form method="post" action="/login">
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="admin"
+            autocomplete="username"
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            required
+          />
+          <button type="submit">Sign In</button>
+        </form>
+      </div>
+
+      <footer>
+        Made by Abenezer Nebyu, Brook Gizachew and Natnael Tamrate <br />
+        Copyright &copy; All Rights Reserved | Exam Seating Arrangement System
+      </footer>
+    </div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("error")) {
+        document.getElementById("errorMsg").style.display = "block";
+      }
+      if (params.get("logout")) {
+        document.getElementById("logoutMsg").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
